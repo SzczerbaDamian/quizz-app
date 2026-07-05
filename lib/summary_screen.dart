@@ -17,6 +17,7 @@ class QuestionSummary extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
+                    shape: CircleBorder(),
                     backgroundColor: (data['is_answer_correct'] as bool)
                         ? Colors.green
                         : Colors.red,
@@ -32,9 +33,7 @@ class QuestionSummary extends StatelessWidget {
                       Text(
                         data['question'] as String,
                         style: TextStyle(
-                          color: (data['is_answer_correct'] as bool)
-                              ? Colors.green
-                              : Colors.red,
+                          color: Colors.white,
                         ),
                       ),
                       const SizedBox(height: 5),
@@ -47,7 +46,14 @@ class QuestionSummary extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 5),
-                      Text(data['correct_answer'] as String),
+                      Text(
+                        data['correct_answer'] as String,
+                        style: TextStyle(
+                          color: (data['is_answer_correct'] as bool)
+                              ? Colors.green
+                              : Colors.red,
+                        ),
+                      ),
                     ],
                   ),
                 ),
