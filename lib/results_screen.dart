@@ -16,7 +16,6 @@ class ResultsScreen extends StatelessWidget {
         'question': questions[i].question,
         'correct_answer': questions[i].answers[0],
         'user_answer': choosenAnswers[i],
-        
       });
     }
     return summary;
@@ -38,12 +37,19 @@ class ResultsScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text('You answered $numCorrectQuestions out of $numTotalQuestions questions correctly!'),
+            Text(
+              'You answered $numCorrectQuestions out of $numTotalQuestions questions correctly!',
+            ),
             QuestionSummary(sumarryData),
             SizedBox(height: 30),
             Text('List of answers and questions'),
             SizedBox(height: 30),
-            TextButton(onPressed: () {}, child: Text('Restart Quiz!')),
+            TextButton(
+              onPressed: () {
+                // tu trzeba zrobić coś, żeby wrócić do ekranu startowego
+              },
+              child: Text('Restart Quiz!'),
+            ),
           ],
         ),
       ),
