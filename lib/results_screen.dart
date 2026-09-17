@@ -3,9 +3,14 @@ import 'package:adv_basics_2/data/question.dart';
 import 'package:adv_basics_2/summary_screen.dart';
 
 class ResultsScreen extends StatelessWidget {
-  const ResultsScreen({required this.choosenAnswers, super.key});
+  const ResultsScreen({
+    required this.choosenAnswers,
+    required this.restartQuizFunction,
+    super.key,
+  });
 
   final List<String> choosenAnswers;
+  final void Function() restartQuizFunction;
 
   List<Map<String, Object>> getSummaryData() {
     final List<Map<String, Object>> summary = [];
@@ -28,7 +33,6 @@ class ResultsScreen extends StatelessWidget {
     final numCorrectQuestions = sumarryData.where((data) {
       return data['correct_answer'] == data['user_answer'];
     }).length;
-
     return SizedBox(
       width: double.infinity, // czemu width a nie height?
       child: Container(
@@ -45,9 +49,8 @@ class ResultsScreen extends StatelessWidget {
             Text('List of answers and questions'),
             SizedBox(height: 30),
             TextButton(
-              onPressed: () {
-                // tu trzeba zrobić coś, żeby wrócić do ekranu startowego
-              },
+              onPressed:
+                  restartQuizFunction, // tu trzeba zrobić coś, żeby wrócić do ekranu startowego,
               child: Text('Restart Quiz!'),
             ),
           ],
