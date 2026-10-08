@@ -42,16 +42,34 @@ class ResultsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
+              style: TextStyle(
+                fontSize: 20,
+                color: Color.fromARGB(255, 181, 43, 43),
+              ),
               'You answered $numCorrectQuestions out of $numTotalQuestions questions correctly!',
             ),
             QuestionSummary(sumarryData),
             SizedBox(height: 30),
-            Text('List of answers and questions'),
-            SizedBox(height: 30),
-            TextButton(
-              onPressed:
-                  restartQuizFunction, // tu trzeba zrobić coś, żeby wrócić do ekranu startowego,
-              child: Text('Restart Quiz!'),
+            TextButton.icon(
+              onPressed: restartQuizFunction,
+              style: ButtonStyle(
+                iconColor: WidgetStateProperty.resolveWith((states) {
+                  if (states.contains(WidgetState.pressed)) {
+                    return const Color.fromARGB(255, 7, 255, 172);
+                  } else {
+                    return const Color.fromARGB(255, 181, 43, 43);
+                  }
+                }),
+                backgroundColor: WidgetStateProperty.resolveWith((states) {
+                  if (states.contains(WidgetState.pressed)) {
+                    return const Color.fromARGB(255, 7, 255, 172);
+                  } else {
+                    return const Color.fromARGB(255, 167, 181, 43);
+                  }
+                }),
+              ),
+              icon: Icon(Icons.refresh),
+              label: Text('Restart Quiz!'),
             ),
           ],
         ),
